@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UCHfolder>C:\Program Files (x86)\Steam\steamapps\common\Ultimate Chicken Horse\</UCHfolder>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -92,10 +95,37 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
+      if not exist  "$(UCHfolder)\Ultim8_mod\" mkdir "$(UCHfolder)\Ultim8_mod\" 
+      copy "$(TargetDir)\Ultim8_mod.dll" "$(UCHfolder)\Ultim8_mod" /y
+      
+      if not exist  "$(UCHfolder)\Doorstop.dll"          copy "$(ProjectDir)\..\Doorstop\Doorstop.dll"           "$(UCHfolder)\" /y
+      if not exist  "$(UCHfolder)\doorstop_config.ini"   copy "$(ProjectDir)\..\Doorstop\doorstop_config.ini"    "$(UCHfolder)\" /y
+      if not exist  "$(UCHfolder)\winhttp.dll"           copy "$(ProjectDir)\..\Doorstop\winhttp.dll"            "$(UCHfolder)\" /y
+      
+      
+      if not exist  "$(UCHfolder)\Ultim8_mod\Mono.Cecil.dll"              copy "$(TargetDir)\Mono.Cecil.dll"              "$(UCHfolder)\Ultim8_mod" /y
+      if not exist  "$(UCHfolder)\Ultim8_mod\MonoMod.RuntimeDetour.dll"   copy "$(TargetDir)\MonoMod.RuntimeDetour.dll"   "$(UCHfolder)\Ultim8_mod" /y
+      if not exist  "$(UCHfolder)\Ultim8_mod\MonoMod.Utils.dll"           copy "$(TargetDir)\MonoMod.Utils.dll"           "$(UCHfolder)\Ultim8_mod" /y
+
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
+      echo "Collecting chicken libs $(ProjectDir)\libs\chicken"
+      if not exist "$(ProjectDir)\libs" mkdir "$(ProjectDir)\libs"
+      if not exist "$(ProjectDir)\libs\chicken" mkdir "$(ProjectDir)\libs\chicken"
+      if not exist "$(UCHfolder)" (
+        echo ERROR: Set UCHfolder PropertyGroup in Ultim8_mod.csproj
+        echo ERROR: Not Found: $(UCHfolder)
+        exit /b 1
+      )
+      if not exist "$(ProjectDir)\libs\chicken\InControl.dll"                           copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\InControl.dll"                           "$(ProjectDir)\libs\chicken\"
+      if not exist "$(ProjectDir)\libs\chicken\com.unity.multiplayer-hlapi.Runtime.dll" copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\com.unity.multiplayer-hlapi.Runtime.dll" "$(ProjectDir)\libs\chicken\"
+      if not exist "$(ProjectDir)\libs\chicken\UnityEngine.CoreModule"                  copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\UnityEngine.CoreModule.dll"              "$(ProjectDir)\libs\chicken\"
+      if not exist "$(ProjectDir)\libs\chicken\Assembly-CSharp.dll"                     copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\Assembly-CSharp.dll"                     "$(ProjectDir)\libs\chicken\"
+      if not exist "$(ProjectDir)\libs\chicken\UnityEngine.Physics2DModule.dll"         copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\UnityEngine.Physics2DModule.dll"         "$(ProjectDir)\libs\chicken\"
+      if not exist "$(ProjectDir)\libs\chicken\UnityEngine.UI.dll"                      copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\UnityEngine.UI.dll"                      "$(ProjectDir)\libs\chicken\"
+      taskkill /f /fi "imagename eq UltimateChickenHorse.exe"
     </PreBuildEvent>
   </PropertyGroup>
 </Project>
