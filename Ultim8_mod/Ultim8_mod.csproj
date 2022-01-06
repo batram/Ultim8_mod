@@ -116,7 +116,7 @@
       if not exist "$(ProjectDir)\libs\chicken" mkdir "$(ProjectDir)\libs\chicken"
       if not exist "$(UCHfolder)" (
         echo ERROR: Set UCHfolder PropertyGroup in Ultim8_mod.csproj
-        echo ERROR: Not Found: $(UCHfolder)
+        echo ERROR: Not Found: "$(UCHfolder)"
         exit /b 1
       )
       if not exist "$(ProjectDir)\libs\chicken\InControl.dll"                           copy "$(UCHfolder)\UltimateChickenHorse_Data\Managed\InControl.dll"                           "$(ProjectDir)\libs\chicken\"
