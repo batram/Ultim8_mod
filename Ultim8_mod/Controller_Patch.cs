@@ -24,6 +24,11 @@ namespace Ultim8_mod
 			Debug.Log("a " + a + " b " + b);
 			new Detour(a, b);
 
+			a = typeof(Controller).GetMethod("RemovePlayer", BindingFlags.Instance | BindingFlags.Public);
+			b = typeof(Controller_Patch).GetMethod("RemovePlayer", BindingFlags.Instance | BindingFlags.Public);
+			Debug.Log("a " + a + " b " + b);
+			new Detour(a, b);
+
 			a = typeof(Controller).GetMethod("GetAssociatedCharacters", BindingFlags.Instance | BindingFlags.Public);
 			b = typeof(Controller_Patch).GetMethod("GetAssociatedCharacters", BindingFlags.Instance | BindingFlags.Public);
 			Debug.Log("a " + a + " b " + b);
@@ -110,6 +115,19 @@ namespace Ultim8_mod
 
 			var prop2 = this.GetType().GetField("associatedChars", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 			prop2.SetValue(this, new Character.Animals[PlayerManager.maxPlayers]);
+		}
+
+		public void RemovePlayer(int player)
+		{
+			var Player_field = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+			Player_field.SetValue(this, 0);
+			var PossibleNetWorkNumber_field = this.GetType().GetField("PossibleNetWorkNumber", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+			PossibleNetWorkNumber_field.SetValue(this, 0);
+
+			var associatedChars_field = this.GetType().GetField("associatedChars", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+			var associatedChars = associatedChars_field.GetValue(this) as Character.Animals[];
+			associatedChars[player - 1] = Character.Animals.NONE;
+			associatedChars_field.SetValue(this, associatedChars);
 		}
 
 		public Character.Animals[] GetAssociatedCharacters()
