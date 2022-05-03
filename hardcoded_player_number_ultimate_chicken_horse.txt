@@ -19,8 +19,7 @@ class ControllerDisconnect
   showingPrompts      = new bool[4];
 
   function ControllerDisconnect.SetPromptForPlayer    hardcoded 4 comparison
-  function ControllerDisconnect.Start                 hardcoded 4 comparison
-
+  
 
 class GraphScoreBoard
   [!MP] ScorePositions = new RectTransform[4];        MorePlayers extends ScorePositions, but does not setup new ones???
