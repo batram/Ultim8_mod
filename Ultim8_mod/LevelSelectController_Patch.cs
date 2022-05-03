@@ -17,6 +17,12 @@ namespace Ultim8_mod
 			Debug.Log("a " + a + " b " + b);
 			new Detour(a, b);
 		}
+
+		/* class LevelSelectController
+			JoinedPlayers = new LobbyPlayer[4]
+			PlayerJoinIndicators	map indicators to 0..3, we reuse existing 4 indicators for multiple players 
+			CursorSpawnPoint		map cursor spawn points to 0..3
+		*/
 		new public void ChangeListener(bool adding)
 		{
 			GameEventManager.ChangeListener<LobbyPlayerRemovedEvent>(this, adding);
@@ -36,6 +42,7 @@ namespace Ultim8_mod
 			GameEventManager.ChangeListener<PlatformPlayerRemovedEvent>(this, adding);
 			GameEventManager.ChangeListener<CheatKonamiEvent>(this, adding);
 
+			/* JoinedPlayers = new LobbyPlayer[4] */
 			if (this.JoinedPlayers.Length < PlayerManager.maxPlayers)
 			{
 				Array.Resize<LobbyPlayer>(ref this.JoinedPlayers, PlayerManager.maxPlayers);
@@ -48,6 +55,7 @@ namespace Ultim8_mod
 				Array.Resize<playerJoinIndicator>(ref this.PlayerJoinIndicators, PlayerManager.maxPlayers);
 				for (int i = num; i < this.PlayerJoinIndicators.Length; i++)
 				{
+					/* map PlayerJoinIndicators to 0..3, we reuse existing 4 indicators for multiple players */
 					this.PlayerJoinIndicators[i] = this.PlayerJoinIndicators[i % num];
 				}
 			}
@@ -59,6 +67,9 @@ namespace Ultim8_mod
 				Array.Resize(ref this.CursorSpawnPoint, PlayerManager.maxPlayers);
 				for (int i = num; i < this.CursorSpawnPoint.Length; i++)
 				{
+					/* map CursorSpawnPoint to 0..3
+						TODO: add new positions, so cursors aren't hidden behind each other on spawn
+					 */
 					this.CursorSpawnPoint[i] = this.CursorSpawnPoint[i % num];
 				}
 			}

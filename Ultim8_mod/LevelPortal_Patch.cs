@@ -14,9 +14,9 @@ namespace Ultim8_mod
 			new Detour(LevelPortalStart, LevelPortalStartr);
 		}
 
+		/* class LevelPortal fudge with VoteArrows */
 		new protected virtual void Awake()
 		{
-
 			VoteArrow[] componentsInChildren = base.GetComponentsInChildren<VoteArrow>();
 			if (componentsInChildren.Length != GameSettings.GetInstance().MaxPlayers)
 			{

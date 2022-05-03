@@ -24,6 +24,7 @@ namespace Ultim8_mod
 			new Detour(a, b);
 		}
 
+		/* function InventoryBook.HasCursor hardcoded 4 comparison */
 		new public bool HasCursor(int PlayerNumber)
 		{
 			if (PlayerNumber < 1 || PlayerNumber > PlayerManager.maxPlayers)
@@ -40,9 +41,9 @@ namespace Ultim8_mod
 			return false;
 		}
 
-
+		/* function InventoryBook.GetCursor hardcoded 4 comparison */
 		new public PickCursor GetCursor(int PlayerNumber)
-		{
+		{	
 			if (PlayerNumber < 1 || PlayerNumber > PlayerManager.maxPlayers)
 			{
 				return null;
@@ -57,6 +58,7 @@ namespace Ultim8_mod
 			return null;
 		}
 
+		/* function InventoryBook.AddPlayer hardcoded 4 comparison, fixup cursor spawn location for additional players */
 		new public PickCursor AddPlayer(int localPlayerNumber, int networkPlayerNumber, Controller input, Character.Animals animal)
 		{
 			if (localPlayerNumber > PlayerManager.maxPlayers || localPlayerNumber < 1)
@@ -78,6 +80,7 @@ namespace Ultim8_mod
 			Debug.Log("PickCursor AddPlayer");
 			AkSoundEngine.SetSwitch("Character", animal.ToString(), base.gameObject);
 			pickCursor.transform.parent = base.transform;
+			/* fixup cursor spawn location for additional players */
 			pickCursor.transform.localPosition = this.cursorSpawnLocation[(localPlayerNumber > 4) ? 0 : (localPlayerNumber - 1)].localPosition;
 			pickCursor.InventoryBookMenu = this;
 			pickCursor.SetBounds(new Bounds(this.currentResolutionBoundingBox.center / base.transform.localScale.x, this.currentResolutionBoundingBox.size / base.transform.localScale.x));

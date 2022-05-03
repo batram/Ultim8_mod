@@ -22,6 +22,7 @@ namespace Ultim8_mod
             new Detour(AddPlayer, AddPlayerr);
         }
 
+		/* function PartyBox.AddPlayer	hardcoded 4 comparison */
         public PartyPickCursor AddPlayerx(int playerNumber, Character.Animals animal)
 		{
 			Debug.Log("PartyPickCursor AddPlayerx");
@@ -79,6 +80,7 @@ namespace Ultim8_mod
 			return partyPickCursor;
 		}
 
+		/* function PartyBox.SetPlayerCount	hardcoded 4 comparison */
 		public void SetPlayerCount(int players)
 		{
 			if (players < 1 || players > PlayerManager.maxPlayers)

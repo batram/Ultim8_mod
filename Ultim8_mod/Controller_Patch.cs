@@ -45,6 +45,8 @@ namespace Ultim8_mod
 			new Detour(a, b);
 		}
 
+
+		/* function Controller.AddPlayer hardcoded 4 comparison */
 		public void AddPlayer(int player)
 		{
 			var prop = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
@@ -58,6 +60,7 @@ namespace Ultim8_mod
 			prop.SetValue(this, Player);
 		}
 
+		/* function Controller.GetLastPlayerNumber hardcoded 3 comparison (in for loop 3 to 0) */
 		public int GetLastPlayerNumber()
 		{
 			var prop = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
@@ -73,6 +76,7 @@ namespace Ultim8_mod
 			return 0;
 		}
 
+		/* function Controller.GetLastPlayerNumberAfter hardcoded 3 comparison (in for loop 3 to 0) */
 		public int GetLastPlayerNumberAfter(int lastPlayerNumber)
 		{
 			var prop = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
@@ -93,6 +97,7 @@ namespace Ultim8_mod
 			return 0;
 		}
 
+		/* function Controller.AssociateCharacter hardcoded 4 comparison */
 		public void AssociateCharacter(Character.Animals character, int player)
 		{
 			var prop = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
@@ -108,6 +113,7 @@ namespace Ultim8_mod
 			associatedChars[player - 1] = character;
 		}
 
+		/* function Controller.ClearPlayers hardcoded 4 size */
 		public void ClearPlayers()
 		{
 			var prop = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
@@ -117,6 +123,7 @@ namespace Ultim8_mod
 			prop2.SetValue(this, new Character.Animals[PlayerManager.maxPlayers]);
 		}
 
+		/* function Controller.RemovePlayer num calc problems */
 		public void RemovePlayer(int player)
 		{
 			var Player_field = this.GetType().GetField("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
@@ -130,6 +137,9 @@ namespace Ultim8_mod
 			associatedChars_field.SetValue(this, associatedChars);
 		}
 
+		/* class Controller 
+			associatedChars = new Character.Animals[4]; 
+		*/
 		public Character.Animals[] GetAssociatedCharacters()
 		{
 			var prop2 = this.GetType().GetField("associatedChars", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);

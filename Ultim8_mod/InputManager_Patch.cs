@@ -19,6 +19,7 @@ namespace Ultim8_mod
 			new Detour(get_EnableNativeInput, b);
 		}
 
+		/* function InputManager.EnableNativeInput patch getter to always return true, so we can use more controllers */
 		internal static bool getEnableNativeInput()
 		{
 			Debug.Log("PATCHED INputmanager getEnableNativeInput always true");

@@ -24,6 +24,10 @@ namespace Ultim8_mod
 			Detour dOnLocalPlayerAdded = new Detour(OnLocalPlayerAdded, OnLocalPlayerAddedr);
 		}
 
+		/* class StatTracker 
+			saveFiles = new SaveFileData[4];
+			saveStatuses = new StatTracker.SaveFileStatus[4];
+		*/
 		public void StatTrackerInitialize()
 		{
 			Debug.Log("StatTrackerInitialize");
@@ -32,7 +36,7 @@ namespace Ultim8_mod
 			StatTracker.Instance.saveStatuses = new StatTracker.SaveFileStatus[PlayerManager.maxPlayers];
 		}
 
-
+		/* function StatTracker.GetSaveFileDataForLocalPlayer hardcoded 4 */
 		public SaveFileData GetSaveFileDataForLocalPlayer(int localPlayerNumber, bool fallback = false)
 		{
 			if (localPlayerNumber <= 0 || localPlayerNumber > PlayerManager.maxPlayers)
@@ -50,10 +54,9 @@ namespace Ultim8_mod
 			return StatTracker.Instance.saveFiles[localPlayerNumber - 1];
 		}
 
+		/* function StatTracker.OnLocalPlayerAdded hardcoded 4 */
 		public void OnLocalPlayerAdded(int playerLocalNumber)
 		{
-			
-
 			if (playerLocalNumber <= 0 || playerLocalNumber > PlayerManager.maxPlayers)
 			{
 				Debug.LogError("ERROR: Illegal player local number (" + playerLocalNumber.ToString() + ") max " + PlayerManager.maxPlayers);

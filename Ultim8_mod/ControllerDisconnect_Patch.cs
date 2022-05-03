@@ -23,6 +23,7 @@ namespace Ultim8_mod
             Debug.Log("ControllerDisconnect patch");
         }
 
+        /* function ControllerDisconnect.SetPromptForPlayer hardcoded 4 comparison */
         new public static void SetPromptForPlayer(int playerNumber, bool shown)
         {
             Debug.Log("SetPromptForPlayer " + playerNumber);
@@ -41,6 +42,12 @@ namespace Ultim8_mod
             }
         }
 
+        /* class ControllerDisconnect 
+            ConnectPrompts      = init to 4 MonoBehaviour
+            orphanedReceivers   = List with 4 entries
+            orphanedCharacters  = new Character.Animals[4][];
+            showingPrompts      = new bool[4];
+        */
         private void Start()
         {
             try

@@ -24,6 +24,7 @@ namespace Ultim8_mod
 			new Detour(ca, b);	
 		}
 
+		/* constructor KickTracker hardcoded 4 comparison and size */
 		public KickTracker Inst()
         {
 			var prop = this.GetType().GetField("votes", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -38,6 +39,7 @@ namespace Ultim8_mod
 			return this; 
 		}
 
+		/* function KickTracker.ClearPlayer hardcoded 4 comparison */
 		new public void ClearPlayer(int player)
 		{
 			var prop = this.GetType().GetField("votes", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -49,6 +51,7 @@ namespace Ultim8_mod
 			}
 		}
 
+		/* function KickTracker.CountVotes hardcoded 4 comparison */
 		new public int CountVotes(int targetPlayer)
 		{
 			var prop = this.GetType().GetField("votes", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);

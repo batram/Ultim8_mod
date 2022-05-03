@@ -21,6 +21,8 @@ namespace Ultim8_mod
 			MethodInfo VersusControlplayersLeftToPlacer = typeof(VersusControl_Patch).GetMethod("playersLeftToPlace", BindingFlags.Instance | BindingFlags.NonPublic);
 			new Detour(VersusControlplayersLeftToPlace, VersusControlplayersLeftToPlacer);
 		}
+
+		/* function VersusControl.playersLeftToPlace hardcoded 4 comparison*/
 		protected bool playersLeftToPlace()
 		{
 			for (int num = 0; num != PlayerManager.maxPlayers; num++)
@@ -37,6 +39,10 @@ namespace Ultim8_mod
 
 		}
 
+		/* class VersusControl hardcoded 4
+			winOrder = new GamePlayer[4];
+			RemainingPlacements = new int[4];
+		 */
 		protected virtual void PreStartClient()
 		{
 			Debug.Log(" VersusControl ");

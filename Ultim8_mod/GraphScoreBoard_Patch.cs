@@ -20,7 +20,7 @@ namespace Ultim8_mod
 			new Detour(a, b);
 		}
 
-
+		/* function GraphScoreBoard.SetPlayerCount hardcoded 4 comparison, add ScorePositions for additional players */
 		new public void SetPlayerCount(int numberPlayers)
 		{			
 
@@ -34,6 +34,7 @@ namespace Ultim8_mod
 			Vector3 vector = this.ScorePositions[0].position + new Vector3(0f, 1.25f, 0f);
 			for (int num = 0; num != numberPlayers; num++)
 			{
+				/* add ScorePositions for additional players */
 				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.scoreLinePrefab.gameObject, vector - new Vector3(0f, (float)num * 1.25f, 0f), Quaternion.identity);
 				gameObject.transform.SetParent(this.mainParent);
 				gameObject.transform.localScale = new Vector3(1f, 0.5f, 1f);
@@ -42,6 +43,7 @@ namespace Ultim8_mod
 			}
 		}
 
+		/* function GraphScoreBoard.SetPlayerCharacter	hardcoded 3 comparison (order: 0 to 3) */
 		new public void SetPlayerCharacter(int order, Character.Animals character, bool altSkin, LobbyPlayer lobbyPl, int handicap)
 		{
 			if (order < 0 || order > PlayerManager.maxPlayers - 1)

@@ -29,6 +29,9 @@ namespace Ultim8_mod
 			//UpdateLobbyInfo for (int num2 = 0; num2 != 4; num2++)
 		}
 
+		/* class LobbySkillTracker
+			ratings = new Rating[4];
+		*/
 		public void Start()
 		{
 			var prop = this.GetType().GetField("ratings", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -38,6 +41,7 @@ namespace Ultim8_mod
 			//GameEventManager.ChangeListener<GameResultsEvent>(this, true);
 		}
 
+		/* function LobbySkillTracker.RecalculateScores hardcoded 4 comparison */
 		new public void RecalculateScores(IDictionary<GamePlayer, int> gameResults)
 		{
 			if (gameResults.Count <= 1)

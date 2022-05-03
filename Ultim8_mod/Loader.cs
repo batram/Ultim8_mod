@@ -26,8 +26,8 @@ namespace Ultim8_mod
         {
             if (next.name == "Init")
             {
-                Debug.Log("Ultim8_mod: INIT Scene - mod EYERYTHING! (for " + PlayerManager.maxPlayers + " players)");
                 patchAll();
+                Debug.Log("Ultim8_mod: INIT Scene - mod EYERYTHING! (for " + PlayerManager.maxPlayers + " players)");
             }
             fixup_schmoo();
         }
@@ -68,6 +68,7 @@ namespace Ultim8_mod
                         Color[] playerColors = GameSettings.GetInstance().PlayerColors;
                         for (int j = num2; j < playerColors.Length; j++)
                         {
+                            /* Random generate colors for new players */
                             GameSettings.GetInstance().PlayerColors[j] = new Color(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
                         }
                     }

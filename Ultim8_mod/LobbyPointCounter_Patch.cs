@@ -15,6 +15,11 @@ namespace Ultim8_mod
 			new Detour(a, b);
 		}
 
+		/*	class LobbyPointCounter 
+			playerJoinedGame
+			playerPlayedGame
+			playerAFK
+		*/
 		private void Start()
 		{
 			var prop2 = this.GetType().GetField("playerJoinedGame", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
