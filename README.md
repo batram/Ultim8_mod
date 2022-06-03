@@ -1,3 +1,8 @@
+# Archived: Use EvenMorePlayers mod
+**Check out [EvenMorePlayers](https://github.com/batram/UCH-EvenMorePlayers) `BepInEx` mod for `Ultimate Chicken Horse` for up to 100 players.**
+
+The original `Ultim8_mod` mod is no longer being developed or maintained, since it is not compatible with other mods using `BepInEx`.
+
 # Ultim8_mod
 This mod allows up to 8 local players in Ultimate Chicken Horse.
 
